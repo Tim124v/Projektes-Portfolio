@@ -1,0 +1,199 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #a0c4ff, #d6eaff);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+.main-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.header-section {
+    text-align: center;
+    padding: 70px 20px;
+    background: black;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.matrix-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+.header-section h1,
+.header-section p {
+    position: relative;
+    z-index: 2;
+}
+h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+p {
+    font-size: 1.2rem;
+}
+.projects-section {
+    padding: 50px 0;
+    text-align: center;
+    background: #0a0a1a;
+    color: white;
+}
+.projects-section h2 {
+    font-size: 2rem;
+    margin-top: -25px;
+    margin-bottom: 30px;
+    color: white;
+    animation: breathing 3s ease-in-out infinite;
+}
+@keyframes breathing {
+    0% {
+        transform: scale(1);
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        transform: scale(1.1);
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+    }
+    100% {
+        transform: scale(1);
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+}
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 0 20px;
+}
+.project-card {
+    background: rgba(20, 20, 40, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+.project-card:hover {
+    transform: translateY(-5px);
+}
+.project-card h3 {
+    color: #4CAF50;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+.project-card p {
+    color: #ffffff;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+.project-content {
+    padding: 15px;
+}
+.project-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.project-description {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 15px;
+}
+.project-link {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #3b82f6;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+.project-link:hover {
+    background: #2563eb;
+}
+.footer-section {
+    text-align: center;
+    padding: 40px 20px;
+    background: #1f2937;
+    color: white;
+}
+.contact-icons a {
+    margin: 0 10px;
+    color: #93c5fd;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+.contact-icons a:hover {
+    color: #60a5fa;
+}
+.about-section {
+    background: #0a0a1a;
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+}
+.about-container {
+    max-width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.about-card {
+    background: rgba(20, 20, 40, 0.8);
+    border-radius: 10px;
+    padding: 25px;
+    transition: transform 0.3s ease;
+}
+.about-card:hover {
+    transform: translateY(-5px);
+}
+.about-card h3 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+.skills-list, .hobbies-list {
+    list-style: none;
+    padding: 0;
+}
+.skills-list li, .hobbies-list li {
+    margin: 10px 0;
+    padding: 8px;
+    background: rgba(30, 144, 255, 0.1);
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+.skills-list li:hover, .hobbies-list li:hover {
+    background: rgba(30, 144, 255, 0.2);
+}
+.about-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: white;
+    animation: breathing 3s ease-in-out infinite;
+}
+.projects-section .projects-grid,
+.about-section .about-container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+.folder-icon,
+.folder-icon::before,
+.folder-icon::after,
+@keyframes folderMove {
+    display: none;
+}
+@keyframes folderOpen {
+    display: none;
+}
