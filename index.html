@@ -4,105 +4,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional developer portfolio showcasing web development projects and skills">
+    <meta name="keywords" content="web developer, portfolio, frontend, backend, full-stack">
     <title>Developer Portfolio</title>
     <link rel="stylesheet" href="js/style.css">
+    <!-- Добавляем Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="main-container">
-
+        <!-- Header section -->
         <header class="header-section">
             <canvas class="matrix-canvas"></canvas>
             <h1>My Developer Portfolio</h1>
             <p>Hi! I'm an experienced developer with a passion for creating modern, scalable web applications.</p>
+            <!-- Добавляем кнопку CTA -->
+            <a href="#contact" class="cta-button">Get in Touch</a>
         </header>
 
-        <section class="projects-section">
-            <h2>Projects</h2>
-            <div class="projects">
-                <div class="project-card">
-                    <h3>Project Title</h3>
-                    <p>Project description goes here...</p>
-                    <a href="https://github.com/username/project-one" class="project-link" target="_blank">View Project</a>
-                </div>
-                <div class="project-card">
-                    <h3>Project Title</h3>
-                    <p>Project description goes here...</p>
-                    <a href="https://github.com/username/project-two" class="project-link" target="_blank">View Project</a>
-                </div>
-            </div>
-        </section>
-
+        <!-- About section -->
         <section class="about-section">
-            <h2 class="about-title">About Me</h2>
+            <h2 class="section-title">About Me</h2>
+            
             <div class="about-container">
-                <div class="about-card">
-                    <h3>Who I Am</h3>
-                    <p>Hello! I'm a web developer passionate about creating modern and innovative web applications. My journey in programming started with learning HTML and CSS, and since then I've been constantly growing in this field.</p>
+                <div class="about-image">
+                    <img src="./img/photo_2.jpg" alt="Professional Developer Portrait" class="profile-image">
+                    <div class="social-overlay">
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
-
-                <div class="about-card">
-                    <h3>My Skills</h3>
-                    <ul class="skills-list">
-                        <li>HTML5 / CSS3</li>
-                        <li>JavaScript / TypeScript</li>
-                        <li>React / Vue.js</li>
-                        <li>Node.js</li>
-                        <li>Git</li>
-                        <li>Responsive Design</li>
-                    </ul>
+                <div class="about-content">
+                    <h3 class="about-subtitle">Who I Am</h3>
+                    <p class="about-text">
+                        Hello! I'm a web developer passionate about creating modern and innovative web applications. My journey in programming started with learning HTML and CSS, and since then I've been constantly growing in this field.
+                    </p>
                 </div>
-
-                <div class="about-card">
-                    <h3>My Hobbies</h3>
-                    <ul class="hobbies-list">
-                        <li>Learning New Technologies</li>
-                        <li>Reading Technical Literature</li>
-                        <li>Traveling</li>
-                        <li>Photography</li>
-                        <li>Sports</li>
-                    </ul>
+            </div>
+            
+            <div class="skills-section">
+                <h3>My Skills</h3>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <i class="fab fa-html5"></i>
+                        <span>HTML5 / CSS3</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-js"></i>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-react"></i>
+                        <span>React / Vue.js</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-node-js"></i>
+                        <span>Node.js</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-git-alt"></i>
+                        <span>Git</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-robot"></i>
+                        <span>AI</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hobbies-section">
+                <h3>My Hobbies</h3>
+                <div class="hobbies-list">
+                    <div class="hobby-item">
+                        <i class="fas fa-laptop-code"></i>
+                        <p>Learning New Technologies</p>
+                    </div>
+                    <div class="hobby-item">
+                        <i class="fas fa-book"></i>
+                        <p>Reading Technical Literature</p>
+                    </div>
+                    <div class="hobby-item">
+                        <i class="fas fa-plane"></i>
+                        <p>Traveling</p>
+                    </div>
+                    <div class="hobby-item">
+                        <i class="fas fa-camera"></i>
+                        <p>Photography</p>
+                    </div>
+                    <div class="hobby-item">
+                        <i class="fas fa-running"></i>
+                        <p>Sports</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <div class="projects-grid">
-            <div class="project-card">
-                <h3>Project One</h3>
-                <p>A modern web application built with React and Node.js</p>
-                <div class="project-links">
-                    <a href="#" class="project-link">View Project</a>
-                    <a href="#" class="project-link">Source Code</a>
+        <!-- Tech Stack section -->
+        <section id="skills" class="tech-stack">
+            <h2>Tech Stack</h2>
+            <div class="skills-progress">
+                <div class="skill-progress-item">
+                    <div class="skill-title">
+                        <i class="fab fa-html5"></i>
+                        HTML5
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%"></div>
+                    </div>
+                    <span class="skill-percentage">85%</span>
+                </div>
+
+                <div class="skill-progress-item">
+                    <div class="skill-title">
+                        <i class="fab fa-css3-alt"></i>
+                        CSS3
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%"></div>
+                    </div>
+                    <span class="skill-percentage">75%</span>
+                </div>
+
+                <div class="skill-progress-item">
+                    <div class="skill-title">
+                        <i class="fab fa-js"></i>
+                        JavaScript
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 45%"></div>
+                    </div>
+                    <span class="skill-percentage">35%</span>
+                </div>
+
+                <div class="skill-progress-item">
+                    <div class="skill-title">
+                        <i class="fab fa-react"></i>
+                        React
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 35%"></div>
+                    </div>
+                    <span class="skill-percentage">35%</span>
+                </div>
+
+                <div class="skill-progress-item">
+                    <div class="skill-title">
+                        <i class="fab fa-node-js"></i>
+                        Node.js
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 45%"></div>
+                    </div>
+                    <span class="skill-percentage">45%</span>
                 </div>
             </div>
+        </section>
 
-            <div class="project-card">
-                <h3>Project Two</h3>
-                <p>Full-stack application using Vue.js and Express</p>
-                <div class="project-links">
-                    <a href="#" class="project-link">View Project</a>
-                    <a href="#" class="project-link">Source Code</a>
-                </div>
-            </div>
+        <!-- Contact section -->
+        <section id="contact" class="contact-section">
+            <h2>Let's Work Together</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required class="contact-input">
+                <input type="email" placeholder="Your Email" required class="contact-input">
+                <textarea placeholder="Your Message" required class="contact-input"></textarea>
+                <button type="submit" class="submit-button">
+                    <span>Send Message</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </section>
 
-            <div class="project-card">
-                <h3>Project Three</h3>
-                <p>Responsive website with modern animations</p>
-                <div class="project-links">
-                    <a href="#" class="project-link">View Project</a>
-                    <a href="#" class="project-link">Source Code</a>
-                </div>
-            </div>
-        </div>
-
+        <!-- Footer -->
         <footer class="footer-section">
-            <h2>Contact Me</h2>
             <div class="contact-icons">
-                <a href="mailto:your.email@example.com">📧</a>
-                <a href="https://github.com/username" target="_blank">🐙</a>
-                <a href="https://linkedin.com/in/username" target="_blank">🔗</a>
+                <a href="#" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="#" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            
+            <div class="footer-text">
+                <p>Let's create something amazing together! Contact me through 
+                    <a href="#" class="footer-link">social media</a> or 
+                    <a href="#" class="footer-link">send a message</a>.
+                </p>
+
+                <div class="copyright">
+                    © 2024 Your Name. All rights reserved.
+                </div>
             </div>
         </footer>
     </div>
+
     <script src="js/script.js"></script>
 </body>
 </html>
