@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Professional developer portfolio showcasing web development projects and skills">
     <meta name="keywords" content="web developer, portfolio, frontend, backend, full-stack">
-    <title>Developer Portfolio</title>
-    <link rel="stylesheet" href="js/style.css">
-    <!-- Добавляем Font Awesome для иконок -->
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -17,7 +17,7 @@
         <header class="header-section">
             <canvas class="matrix-canvas"></canvas>
             <h1>My Developer Portfolio</h1>
-            <p>Hi! I'm an experienced developer with a passion for creating modern, scalable web applications.</p>
+            <p>Hi! I'm a developer with a passion for creating modern, scalable web applications.</p>
             <!-- Добавляем кнопку CTA -->
             <a href="#contact" class="cta-button">Get in Touch</a>
         </header>
@@ -30,9 +30,9 @@
                 <div class="about-image">
                     <img src="./img/photo_2.jpg" alt="Professional Developer Portrait" class="profile-image">
                     <div class="social-overlay">
-                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="https://github.com/Tim124v" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:volkprizrak124@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
                 <div class="about-content">
@@ -165,29 +165,23 @@
         <section id="contact" class="contact-section">
             <h2>Let's Work Together</h2>
             <form class="contact-form">
-                <input type="text" placeholder="Your Name" required class="contact-input">
-                <input type="email" placeholder="Your Email" required class="contact-input">
-                <textarea placeholder="Your Message" required class="contact-input"></textarea>
-                <button type="submit" class="submit-button">
-                    <span>Send Message</span>
-                    <i class="fas fa-paper-plane"></i>
-                </button>
+                <input type="text" name="name" class="contact-input" placeholder="Your Name" required>
+                <input type="email" name="email" class="contact-input" placeholder="Your Email" required>
+                <textarea name="message" class="contact-input" placeholder="Your Message" required></textarea>
+                <button type="submit" class="submit-button">Send Message <i class="fas fa-paper-plane"></i></button>
             </form>
         </section>
 
         <!-- Footer -->
         <footer class="footer-section">
             <div class="contact-icons">
-                <a href="#" aria-label="GitHub">
+                <a href="https://github.com/Tim124v" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="#" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="#" aria-label="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#" aria-label="Email">
+                <a href="mailto:volkprizrak124@gmail.com" aria-label="Email">
                     <i class="fas fa-envelope"></i>
                 </a>
             </div>
@@ -205,6 +199,7 @@
         </footer>
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="js/matrix.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
