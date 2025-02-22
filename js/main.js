@@ -25,7 +25,7 @@ async function handleFormSubmit(e) {
         submitButton.disabled = true;
 
         // Добавляем режим CORS и заголовки
-        const response = await fetch('https://localhost:3000/send-email', {
+        const response = await fetch('http://localhost:3001/send-email', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

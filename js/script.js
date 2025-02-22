@@ -22,19 +22,27 @@ let width, height;
 class MatrixAnimation {
     constructor() {
         this.canvas = document.querySelector('.matrix-canvas');
-        if (!this.canvas) return;
+        if (!this.canvas) {
+            console.warn('Matrix canvas not found');
+            return;
+        }
         
         this.ctx = this.canvas.getContext('2d');
         this.drops = [];
         this.animationFrame = null;
+        this.isRunning = false;
         this.init();
     }
 
     init() {
-        this.resizeCanvas();
-        this.setupEventListeners();
-        this.initDrops();
-        this.startAnimation();
+        try {
+            this.resizeCanvas();
+            this.setupEventListeners();
+            this.initDrops();
+            this.startAnimation();
+        } catch (error) {
+            console.error('Initialization error:', error);
+        }
     }
 
     setupEventListeners() {
@@ -92,13 +100,22 @@ class MatrixAnimation {
     }
 
     startAnimation() {
-        this.draw();
+        if (!this.isRunning) {
+            this.isRunning = true;
+            this.draw();
+        }
     }
 
     stopAnimation() {
         if (this.animationFrame) {
             cancelAnimationFrame(this.animationFrame);
+            this.isRunning = false;
         }
+    }
+
+    cleanup() {
+        this.stopAnimation();
+        window.removeEventListener('resize', this.debounced);
     }
 }
 
@@ -187,12 +204,17 @@ class StatsAnimation {
     }
 }
 
-// Инициализация после загрузки DOM
+// Улучшаем инициализацию
 document.addEventListener('DOMContentLoaded', () => {
     try {
-        new MatrixAnimation();
-        new ProjectCards();
-        new StatsAnimation();
+        const matrixAnimation = new MatrixAnimation();
+        const projectCards = new ProjectCards();
+        const statsAnimation = new StatsAnimation();
+
+        // Добавляем очистку при уничтожении
+        window.addEventListener('unload', () => {
+            matrixAnimation.cleanup();
+        });
     } catch (error) {
         console.error('Initialization error:', error);
     }
