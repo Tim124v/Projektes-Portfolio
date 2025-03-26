@@ -1,67 +1,52 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', handleFormSubmit);
-    }
-});
-
-async function handleFormSubmit(e) {
-    e.preventDefault();
-    
-    const form = e.target;
+    const form = document.querySelector('.contact-form');
     const submitButton = form.querySelector('.submit-button');
-    const originalButtonText = submitButton.innerHTML;
-    
-    // Собираем данные формы
-    const formData = new FormData(form);
-    const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        message: formData.get('message')
-    };
-    
-    try {
-        submitButton.innerHTML = 'Sending...';
-        submitButton.disabled = true;
 
-        // Добавляем режим CORS и заголовки
-        const response = await fetch('http://localhost:3001/send-email', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            mode: 'cors',
-            credentials: 'include',
-            body: JSON.stringify(data)
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const result = await response.json();
-        console.log('Success:', result);
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
         
+        const formData = {
+            name: form.querySelector('input[name="name"]').value,
+            email: form.querySelector('input[name="email"]').value,
+            message: form.querySelector('textarea[name="message"]').value
+        };
+
         form.reset();
-        showNotification('Message sent successfully!', 'success');
-    } catch (error) {
-        console.error('Error:', error);
-        showNotification('Error sending message. Please try again.', 'error');
-    } finally {
-        submitButton.innerHTML = originalButtonText;
-        submitButton.disabled = false;
-    }
-}
+        submitButton.disabled = true;
+        submitButton.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+
+        try {
+            const response = await fetch('http://localhost:3001/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                showNotification('Message sent successfully!', 'success');
+            } else {
+                throw new Error(data.error || 'Error sending message');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            showNotification('Error sending message. Please try again.', 'error');
+        } finally {
+            submitButton.disabled = false;
+            submitButton.innerHTML = 'Send <i class="fas fa-paper-plane"></i>';
+        }
+    });
+});
 
 function showNotification(message, type) {
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
     notification.textContent = message;
-    
     document.body.appendChild(notification);
     
-    // Удаляем уведомление через 3 секунды
     setTimeout(() => {
         notification.remove();
     }, 3000);

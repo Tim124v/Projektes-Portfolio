@@ -26,9 +26,11 @@
 
 /* Основные стили */
 body {
-    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
     background: #000000;
-    color: var(--white);
+    color: #ffffff;
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -68,15 +70,6 @@ h3 { font-size: 1.5rem; }
     overflow: hidden;
     max-width: 1400px;
     margin: 0 auto;
-}
-
-.matrix-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
 }
 
 /* Статистика */
@@ -263,14 +256,6 @@ h3 { font-size: 1.5rem; }
     overflow: hidden;
     max-width: 1400px;
     margin: 0 auto;
-}
-.matrix-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
 }
 .header-section h1,
 .header-section p {
@@ -707,168 +692,22 @@ p:hover {
 }
 
 .contact-input {
-    width: 50%;
+    width: 100%;
     padding: 15px;
-    margin: 12px auto;
     border: 2px solid rgba(76, 175, 80, 0.3);
     border-radius: 8px;
     background: rgba(20, 20, 40, 0.7);
     color: #ffffff;
-    font-size: 16px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.contact-input:focus {
-    outline: none;
-    border-color: #4CAF50;
-    background: rgba(30, 30, 60, 0.9);
-    box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
-    transform: translateY(-2px);
-}
-
-.contact-input::placeholder {
-    color: rgba(255, 255, 255, 0.6);
-    transition: all 0.3s ease;
-}
-
-.contact-input:focus::placeholder {
-    opacity: 0;
-    transform: translateX(10px);
-}
-
-.contact-form {
-    position: relative;
-    z-index: 1;
-}
-
-.contact-form::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    background: linear-gradient(45deg, 
-        rgba(76, 175, 80, 0.1),
-        rgba(30, 30, 60, 0.1),
-        rgba(76, 175, 80, 0.1));
-    border-radius: 12px;
-    z-index: -1;
-    filter: blur(10px);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.contact-form:hover::before {
-    opacity: 1;
-}
-
-textarea.contact-input {
-    min-height: 150px;
-    resize: vertical;
-    line-height: 1.6;
-}
-
-@keyframes placeholderWave {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(10px); }
-}
-
-.contact-input:focus::placeholder {
-    animation: placeholderWave 0.5s ease forwards;
-}
-
-.contact-input:invalid:focus {
-    border-color: #ff4444;
-    animation: shake 0.3s ease-in-out;
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
-}
-
-.contact-input:valid {
-    border-color: #4CAF50;
-    background: rgba(20, 40, 20, 0.7);
-}
-
-.contact-input:focus {
-    animation: glow 1.5s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-    from {
-        box-shadow: 0 0 5px rgba(76, 175, 80, 0.2),
-                    0 0 10px rgba(76, 175, 80, 0.2),
-                    0 0 15px rgba(76, 175, 80, 0.2);
-    }
-    to {
-        box-shadow: 0 0 10px rgba(76, 175, 80, 0.3),
-                    0 0 20px rgba(76, 175, 80, 0.3),
-                    0 0 30px rgba(76, 175, 80, 0.3);
-    }
 }
 
 .submit-button {
     width: 200px;
     padding: 12px 24px;
-    margin-bottom: 20px;
-    margin-left: 0px;
     border: none;
     border-radius: 30px;
     background: linear-gradient(45deg, #4CAF50, #45a049);
     color: white;
-    font-size: 16px;
-    font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    position: relative;
-    overflow: hidden;
-}
-
-.submit-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(76, 175, 80, 0.2);
-}
-
-.submit-button:active {
-    transform: translateY(0);
-}
-
-.submit-button i {
-    transition: transform 0.3s ease;
-}
-
-.submit-button:hover i {
-    transform: translateX(4px);
-}
-
-.submit-button::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-}
-
-.submit-button:active::after {
-    width: 200px;
-    height: 200px;
-    opacity: 0;
 }
 
 .about-section {
@@ -1207,16 +1046,16 @@ textarea.contact-input {
     padding: 15px 25px;
     border-radius: 4px;
     color: white;
+    z-index: 1000;
     animation: slideIn 0.3s ease-out;
-    z-index: var(--z-index-notification);
 }
 
 .notification.success {
-    background-color: #2ecc71;
+    background-color: #4CAF50;
 }
 
 .notification.error {
-    background-color: #e74c3c;
+    background-color: #ff4444;
 }
 
 @keyframes slideIn {
@@ -1228,4 +1067,54 @@ textarea.contact-input {
         transform: translateX(0);
         opacity: 1;
     }
+}
+
+.contact-input:invalid {
+    border-color: #ff4444;
+}
+
+.contact-input:valid {
+    border-color: #4CAF50;
+}
+
+.submit-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    background: #666;
+}
+
+/* Анимация для полей формы */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Добавляем плавное появление для placeholder */
+.contact-input::placeholder {
+    transition: opacity 0.3s ease;
+}
+
+.contact-input:focus::placeholder {
+    opacity: 0;
+}
+
+/* Стили для формы */
+.contact-section {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
 }

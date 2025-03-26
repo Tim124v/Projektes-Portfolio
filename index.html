@@ -12,17 +12,15 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- <link rel="icon" href="/favicon.ico" type="image/x-icon"> -->
 </head>
 <body>
     <div class="main-container">
         <!-- Header section -->
         <header class="header-section">
-            <canvas class="matrix-canvas"></canvas>
             <h1>My Developer Portfolio</h1>
             <p>Hi! I'm a developer with a passion for creating modern, scalable web applications.</p>
-            <!-- Добавляем кнопку CTA -->
-            <a href="#contact" class="cta-button">Get in Touch</a>
+           
         </header>
 
         <!-- About section -->
@@ -59,7 +57,7 @@
                     </div>
                     <div class="skill-item">
                         <i class="fab fa-react"></i>
-                        <span>React / Vue.js</span>
+                        <span>React</span>
                     </div>
                     <div class="skill-item">
                         <i class="fab fa-node-js"></i>
@@ -168,10 +166,31 @@
         <section id="contact" class="contact-section">
             <h2>Let's Work Together</h2>
             <form class="contact-form">
-                <input type="text" name="name" class="contact-input" placeholder="Your Name" required>
-                <input type="email" name="email" class="contact-input" placeholder="Your Email" required>
-                <textarea name="message" class="contact-input" placeholder="Your Message" required></textarea>
-                <button type="submit" class="submit-button">Send Message <i class="fas fa-paper-plane"></i></button>
+                <input 
+                    type="text" 
+                    name="name" 
+                    class="contact-input" 
+                    placeholder="Your Name" 
+                    required 
+                    minlength="2"
+                >
+                <input 
+                    type="email" 
+                    name="email" 
+                    class="contact-input" 
+                    placeholder="Your Email" 
+                    required
+                >
+                <textarea 
+                    name="message" 
+                    class="contact-input" 
+                    placeholder="Your Message" 
+                    required 
+                    minlength="10"
+                ></textarea>
+                <button type="submit" class="submit-button">
+                    Send <i class="fas fa-paper-plane"></i>
+                </button>
             </form>
         </section>
 
@@ -196,13 +215,12 @@
                 </p>
 
                 <div class="copyright">
-                    © 2024 Timur Volk. All rights reserved.
+                    © 2025 All rights reserved.
                 </div>
             </div>
         </footer>
     </div>
 
-    <script src="js/matrix.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

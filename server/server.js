@@ -3,94 +3,141 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const xss = require('xss-clean');
+const hpp = require('hpp');
 
 const app = express();
 const port = 3001;
 
-// Настройка лимита запросов (не более 5 сообщений в час с одного IP)
+
+app.use(helmet());
+
+// Защита от XSS атак
+app.use(xss());
+
+// Защита от HTTP Parameter Pollution
+app.use(hpp());
+
+// Лимит размера тела запроса
+app.use(express.json({ limit: '10kb' }));
+
+// Более строгий лимит запросов (3 запроса в 15 минут)
 const limiter = rateLimit({
-    windowMs: 60 * 60 * 1000, // 1 час
-    max: 5 // максимум 5 запросов
+    windowMs: 15 * 60 * 1000,
+    max: 3,
+    message: 'Too many requests from this IP, please try again later.',
+    standardHeaders: true,
+    legacyHeaders: false
 });
 
-// Middleware
-app.use(cors({
-    origin: process.env.CORS_ORIGIN || '*', // Используем переменную окружения
-    methods: ['POST'], // Разрешаем только POST запросы
-    credentials: true
-}));
-app.use(express.json());
+// CORS с белым списком доменов
+const whitelist = ['http://127.0.0.1:5500', 'http://localhost:5500'];
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (whitelist.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: ['POST'],
+    credentials: true,
+    maxAge: 3600
+};
+
+app.use(cors(corsOptions));
 app.use('/send-email', limiter);
 
-// Добавляем логирование для отладки
-app.use((req, res, next) => {
-    console.log(`${req.method} ${req.path}`);
-    next();
-});
+// Валидация входящих данных
+const validateEmailData = (req, res, next) => {
+    const { name, email, message } = req.body;
 
-// Создаем тестовый транспорт и проверяем подключение
+    // Проверка наличия всех полей
+    if (!name || !email || !message) {
+        return res.status(400).json({ error: 'All fields are required' });
+    }
+
+    if (name.length < 2 || name.length > 50) {
+        return res.status(400).json({ error: 'Name must be between 2 and 50 characters' });
+    }
+
+    if (message.length < 10 || message.length > 1000) {
+        return res.status(400).json({ error: 'Message must be between 10 and 1000 characters' });
+    }
+
+    // Проверка формата email
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailRegex.test(email)) {
+        return res.status(400).json({ error: 'Invalid email format' });
+    }
+
+    // Проверка на вредоносные символы
+    const dangerousChars = /[<>{}$]/;
+    if (dangerousChars.test(name) || dangerousChars.test(message)) {
+        return res.status(400).json({ error: 'Invalid characters detected' });
+    }
+
+    next();
+};
+
+
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
+    service: 'gmail',
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
-    },
-    debug: true // Включаем отладку
+    }
 });
 
-// Проверяем подключение при запуске
-transporter.verify(function(error, success) {
-    if (error) {
-        console.log('Ошибка подключения к почте:', error);
-    } else {
-        console.log('Сервер готов к отправке писем');
-    }
+
+app.get('/test', (req, res) => {
+    res.json({ message: 'Server is working' });
 });
 
 // Маршрут для отправки email
-app.post('/send-email', async (req, res) => {
-    console.log('Получены данные:', req.body);
-    
+app.post('/send-email', validateEmailData, async (req, res) => {
     const { name, email, message } = req.body;
 
     if (!name || !email || !message) {
-        console.log('Отсутствуют обязательные поля');
-        return res.status(400).json({ error: 'Все поля обязательны' });
+        return res.status(400).json({ error: 'All fields are required' });
     }
 
     try {
-        console.log('Попытка отправки письма...');
-        const info = await transporter.sendMail({
+        await transporter.sendMail({
             from: process.env.EMAIL_USER,
             to: process.env.EMAIL_USER,
-            subject: `Сообщение от ${name}`,
+            subject: `Message from ${name}`,
             text: `
-                Имя: ${name}
+                Name: ${name}
                 Email: ${email}
-                Сообщение: ${message}
+                Message: ${message}
             `,
             html: `
-                <h3>Новое сообщение с формы контактов</h3>
-                <p><strong>Имя:</strong> ${name}</p>
+                <h3>New contact form message</h3>
+                <p><strong>Name:</strong> ${name}</p>
                 <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Сообщение:</strong></p>
+                <p><strong>Message:</strong></p>
                 <p>${message}</p>
             `
         });
         
-        console.log('Письмо отправлено:', info);
-        res.json({ message: 'Письмо успешно отправлено' });
+        res.json({ message: 'Email sent successfully' });
     } catch (error) {
-        console.error('Ошибка при отправке:', error);
-        res.status(500).json({ 
-            error: 'Ошибка при отправке письма',
-            details: error.message 
-        });
+        console.error('Error sending email:', error);
+        res.status(500).json({ error: 'Error sending email' });
     }
 });
 
+// Обработка ошибок
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(500).json({ error: 'Something went wrong!' });
+});
+
+// Запуск сервера
 app.listen(port, () => {
-    console.log(`Сервер запущен на http://localhost:${port}`);
+    console.log(`Server running at http://localhost:${port}`);
+}).on('error', (err) => {
+    console.error('Server error:', err);
 }); 
