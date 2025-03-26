@@ -32,7 +32,11 @@ const limiter = rateLimit({
 });
 
 // CORS с белым списком доменов
-const whitelist = ['http://127.0.0.1:5500', 'http://localhost:5500'];
+const whitelist = [
+    'http://127.0.0.1:5500',
+    'http://localhost:5500',
+    'https://your-frontend-url.github.io'  // Добавьте URL вашего сайта
+];
 const corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1 || !origin) {
