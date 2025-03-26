@@ -15,8 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
         submitButton.disabled = true;
         submitButton.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
 
+        const SERVER_URL = 'https://your-backend-url.onrender.com';
+
         try {
-            const response = await fetch('http://localhost:3001/send-email', {
+            const response = await fetch(`${SERVER_URL}/send-email`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
