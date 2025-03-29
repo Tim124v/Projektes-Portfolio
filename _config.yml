@@ -1,0 +1,27 @@
+title: My Portfolio
+description: Professional developer portfolio showcasing web development projects and skills
+baseurl: ""
+url: ""
+
+# Исключаем ненужные файлы и директории
+exclude:
+  - node_modules/
+  - server/
+  - package.json
+  - package-lock.json
+  - .gitignore
+  - README.md
+
+# Настройки сборки
+build:
+  future: true
+  unpublished: false
+
+# Настройки темы
+theme: jekyll-theme-primer
+
+# Настройки плагинов
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap 

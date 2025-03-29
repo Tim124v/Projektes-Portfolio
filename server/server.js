@@ -37,7 +37,8 @@ const limiter = rateLimit({
 const whitelist = [
     'http://127.0.0.1:5500',
     'http://localhost:5500',
-    'https://your-frontend-url.github.io'  // Добавьте URL вашего сайта
+    'https://tim124v.github.io',
+    'https://tim124v.github.io/Projektes-Portfolio'
 ];
 const corsOptions = {
     origin: function (origin, callback) {
@@ -47,7 +48,7 @@ const corsOptions = {
             callback(new Error('Not allowed by CORS'));
         }
     },
-    methods: ['POST'],
+    methods: ['GET', 'POST'],
     credentials: true,
     maxAge: 3600
 };
