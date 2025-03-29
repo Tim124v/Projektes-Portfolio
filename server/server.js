@@ -10,6 +10,8 @@ const hpp = require('hpp');
 const app = express();
 const port = 3001;
 
+// Serve static files
+app.use(express.static(__dirname + '/../'));
 
 app.use(helmet());
 
