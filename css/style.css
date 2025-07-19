@@ -1,4 +1,4 @@
-/* Основные переменные */
+/* Main variables */
 :root {
     --primary-dark: #0a0a1a;
     --primary-green: #4CAF50;
@@ -17,14 +17,14 @@
     --z-index-notification: 1000;
 }
 
-/* Сброс стилей */
+/* Reset styles */
 *, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Основные стили */
+/* Main styles */
 body {
     margin: 0;
     padding: 0;
@@ -35,7 +35,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Контейнеры */
+/* Containers */
 .main-container,
 .header-section {
     max-width: var(--max-width);
@@ -43,7 +43,7 @@ body {
     padding: 0 var(--spacing-md);
 }
 
-/* Заголовки */
+/* Headings */
 h1, h2, h3 {
     background: linear-gradient(45deg, #4CAF50, #45a049, #2E7D32);
     -webkit-background-clip: text;
@@ -60,7 +60,7 @@ h1 { font-size: 3rem; }
 h2 { font-size: 2.5rem; }
 h3 { font-size: 1.5rem; }
 
-/* Секции */
+/* Sections */
 .header-section {
     text-align: center;
     padding: 70px 20px;
@@ -72,7 +72,7 @@ h3 { font-size: 1.5rem; }
     margin: 0 auto;
 }
 
-/* Статистика */
+/* Statistics */
 .stats-section {
     padding: var(--spacing-lg) 0;
     background: var(--primary-dark);
@@ -91,7 +91,7 @@ h3 { font-size: 1.5rem; }
     min-width: 200px;
 }
 
-/* Технологии */
+/* Technologies */
 .tech-stack {
     padding: var(--spacing-lg) 0;
 }
@@ -117,7 +117,7 @@ h3 { font-size: 1.5rem; }
     transition: width 1s ease;
 }
 
-/* Медиа запросы */
+/* Media queries */
 @media (max-width: 768px) {
     :root {
         --spacing-lg: 30px;
@@ -148,7 +148,7 @@ h3 { font-size: 1.5rem; }
     }
 }
 
-/* Улучшения для доступности */
+/* Accessibility improvements */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
@@ -158,7 +158,7 @@ h3 { font-size: 1.5rem; }
     }
 }
 
-/* Улучшения для темной темы */
+/* Dark theme improvements */
 @media (prefers-color-scheme: dark) {
     :root {
         --primary-dark: #000000;
@@ -166,7 +166,7 @@ h3 { font-size: 1.5rem; }
     }
 }
 
-/* Объединяем общие стили для секций */
+/* Combine common section styles */
 .header-section,
 .projects-section,
 .about-section {
@@ -177,7 +177,7 @@ h3 { font-size: 1.5rem; }
     background: var(--primary-dark);
 }
 
-/* Оптимизируем стили карточек */
+/* Optimize card styles */
 .project-card,
 .about-card {
     background: var(--card-bg);
@@ -186,7 +186,7 @@ h3 { font-size: 1.5rem; }
     transition: transform 0.3s ease;
 }
 
-/* Удаляем дублирующиеся стили */
+/* Remove duplicate styles */
 .project-card h3,
 .about-card h3 {
     color: var(--primary-green);
@@ -194,7 +194,7 @@ h3 { font-size: 1.5rem; }
     font-size: 1.5rem;
 }
 
-/* Удаляем неиспользуемые стили */
+/* Remove unused styles */
 .folder-icon,
 .folder-icon::before,
 .folder-icon::after {
@@ -219,7 +219,7 @@ h3 { font-size: 1.5rem; }
     }
 }
 
-/* Добавляем медиа-запрос для лучшей адаптивности */
+/* Add media query for better responsiveness */
 @media (max-width: 768px) {
     .projects-section,
     .about-section {
@@ -336,7 +336,7 @@ p {
     backdrop-filter: blur(10px);
 }
 
-/* Эффект сияющей сетки на фоне */
+/* Glowing grid effect in the background */
 .footer-section::before {
     content: '';
     position: absolute;
@@ -352,7 +352,7 @@ p {
     opacity: 0.5;
 }
 
-/* Контейнер для иконок соцсетей */
+/* Social icons container */
 .contact-icons {
     display: flex;
     justify-content: center;
@@ -362,7 +362,7 @@ p {
     z-index: 1;
 }
 
-/* Стили для иконок */
+/* Icon styles */
 .contact-icons a {
     width: 50px;
     height: 50px;
@@ -379,7 +379,7 @@ p {
     overflow: hidden;
 }
 
-/* Эффект наведения для иконок */
+/* Icon hover effect */
 .contact-icons a:hover {
     transform: translateY(-5px) scale(1.1);
     border-color: #4CAF50;
@@ -390,7 +390,7 @@ p {
         0 0 60px rgba(76, 175, 80, 0.1);
 }
 
-/* Эффект пульсации для иконок */
+/* Icon pulse effect */
 .contact-icons a::before {
     content: '';
     position: absolute;
@@ -407,7 +407,7 @@ p {
     transform: scale(1.5);
 }
 
-/* Текст в футере */
+/* Footer text */
 .footer-text {
     text-align: center;
     color: rgba(255, 255, 255, 0.8);
@@ -419,7 +419,7 @@ p {
     z-index: 1;
 }
 
-/* Стили для ссылок в футере */
+/* Footer link styles */
 .footer-link {
     color: #4CAF50;
     text-decoration: none;
@@ -449,7 +449,7 @@ p {
     transform: scaleX(1);
 }
 
-/* Копирайт */
+/* Copyright */
 .copyright {
     margin-top: 30px;
     font-size: 0.9rem;
@@ -466,7 +466,7 @@ p {
     color: transparent;
 }
 
-/* Анимация движения сетки */
+/* Grid movement animation */
 @keyframes gridMove {
     0% {
         background-position: 0 0;
@@ -476,7 +476,7 @@ p {
     }
 }
 
-/* Анимация появления футера */
+/* Footer appearance animation */
 .footer-section {
     animation: fadeInFooter 1s ease-out;
 }
@@ -492,7 +492,7 @@ p {
     }
 }
 
-/* Дополнительные эффекты для иконок */
+/* Additional icon effects */
 .contact-icons a i {
     transition: all 0.3s ease;
 }
@@ -507,7 +507,7 @@ p {
     75% { transform: rotate(10deg); }
 }
 
-/* Общие стили для заголовков */
+/* Common heading styles */
 h1, h2, h3 {
     background: linear-gradient(45deg, #4CAF50, #45a049, #2E7D32);
     -webkit-background-clip: text;
@@ -520,7 +520,7 @@ h1, h2, h3 {
     display: inline-block;
 }
 
-/* Главный заголовок */
+/* Main heading */
 h1::after {
     content: '';
     position: absolute;
@@ -536,7 +536,7 @@ h1::after {
     animation: lineFlow 3s ease-in-out infinite;
 }
 
-/* Подзаголовки секций */
+/* Section subtitles */
 h2 {
     font-size: 2.8rem;
     margin-bottom: 25px;
@@ -558,7 +558,7 @@ h2::before {
     animation: slideLine 3s ease-in-out infinite;
 }
 
-/* Заголовки карточек */
+/* Card headings */
 h3 {
     font-size: 1.8rem;
     margin-bottom: 20px;
@@ -570,7 +570,7 @@ h3:hover {
     text-shadow: 3px 3px 15px rgba(76, 175, 80, 0.3);
 }
 
-/* Обычный текст */
+/* Regular text */
 p {
     font-size: 1.1rem;
     line-height: 1.8;
@@ -584,7 +584,7 @@ p:hover {
     text-shadow: 1px 1px 5px rgba(76, 175, 80, 0.2);
 }
 
-/* Анимации */
+/* Animations */
 @keyframes titleGlow {
     0%, 100% {
         text-shadow: 0 0 10px rgba(76, 175, 80, 0.2);
@@ -616,7 +616,7 @@ p:hover {
     }
 }
 
-/* Специальный текст */
+/* Special text */
 .special-text {
     color: #ffffff; /* Fallback */
     color: transparent;
@@ -633,7 +633,7 @@ p:hover {
     letter-spacing: 1px;
 }
 
-/* Эффект появления текста */
+/* Text fade-in effect */
 .fade-in-text {
     opacity: 0;
     transform: translateY(20px);
@@ -647,7 +647,7 @@ p:hover {
     }
 }
 
-/* Стили для важного текста */
+/* Highlighted text styles */
 .highlight-text {
     position: relative;
     display: inline-block;
@@ -672,7 +672,7 @@ p:hover {
     transform-origin: left;
 }
 
-/* Добавляем класс для текста с эффектом печатной машинки */
+/* Add class for typewriter effect */
 .typewriter {
     overflow: hidden;
     border-right: 2px solid #4CAF50;
@@ -862,7 +862,7 @@ p:hover {
     100% { background-position: 60px 60px; }
 }
 
-/* Анимация появления элементов */
+/* Animation for element appearance */
 .about-section > * {
     opacity: 0;
     transform: translateY(20px);
@@ -1024,7 +1024,7 @@ p:hover {
     transform: scale(1.05);
 }
 
-/* Добавим медиа-запрос для адаптивности */
+/* Add media query for responsiveness */
 @media (max-width: 968px) {
     .about-container {
         flex-direction: column;
@@ -1038,7 +1038,7 @@ p:hover {
     }
 }
 
-/* Добавьте эти стили в конец файла */
+/* Add these styles at the end of the file */
 .notification {
     position: fixed;
     bottom: 20px;
@@ -1083,7 +1083,7 @@ p:hover {
     background: #666;
 }
 
-/* Анимация для полей формы */
+/* Animation for form fields */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -1095,7 +1095,7 @@ p:hover {
     }
 }
 
-/* Добавляем плавное появление для placeholder */
+/* Add smooth appearance for placeholder */
 .contact-input::placeholder {
     transition: opacity 0.3s ease;
 }
@@ -1104,7 +1104,7 @@ p:hover {
     opacity: 0;
 }
 
-/* Стили для формы */
+/* Form styles */
 .contact-section {
     padding: 50px 0;
     text-align: center;
