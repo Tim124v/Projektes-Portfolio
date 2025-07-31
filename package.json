@@ -2,7 +2,6 @@
   "name": "your-project-name",
   "version": "1.0.0",
   "scripts": {
-    "dev": "live-server",
     "start": "node server/server.js"
   },
   "description": "",
@@ -10,9 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "live-server": "^1.2.0"
-  },
+  "devDependencies": {},
   "dependencies": {
     "braces": "^3.0.3",
     "cors": "^2.8.5",
