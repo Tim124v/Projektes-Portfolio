@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('.contact-form');
-    const submitButton = form.querySelector('.submit-button');
+    const submitButton = form ? form.querySelector('.submit-button') : null;
+
+    if (form) {
+        form.reset();
+    }
 
     // form.addEventListener('submit', async (e) => {
     //     e.preventDefault();
@@ -41,6 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
     //         submitButton.innerHTML = 'Send <i class="fas fa-paper-plane"></i>';
     //     }
     // });
+});
+
+// Сбрасываем поля при возврате на страницу (в т.ч. из bfcache)
+window.addEventListener('pageshow', () => {
+    const form = document.querySelector('.contact-form');
+    if (form) {
+        form.reset();
+    }
 });
 
 function showNotification(message, type) {
