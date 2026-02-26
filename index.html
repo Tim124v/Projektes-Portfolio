@@ -9,18 +9,20 @@
     <meta name="author" content="Timur Volk">
     <meta name="robots" content="index, follow">
     <title>My Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- <link rel="icon" href="/favicon.ico" type="image/x-icon"> -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect fill='%23000' width='32' height='32' rx='6'/><text x='16' y='22' font-size='18' fill='%234CAF50' text-anchor='middle' font-family='system-ui'>V</text></svg>" type="image/svg+xml">
 </head>
-<body>
-    <div class="main-container">
+<body class="page-load">
+    <div class="main-container" id="top">
         <!-- Header section -->
         <header class="header-section">
             <h1>My Developer Portfolio</h1>
             <p>Hi! I'm a developer with a passion for creating modern, scalable web applications.</p>
-           
         </header>
 
         <!-- About section -->
@@ -152,6 +154,7 @@
         <!-- Tech Stack section -->
         <section id="skills" class="tech-stack" aria-label="Technical Skills">
             <h2>Tech Stack</h2>
+            <p class="tech-stack-intro">Click a card to open the project</p>
             <div class="skills-list">
                 <div class="skill-item">
                     <a href="https://tim124v.github.io/goit-markup-hw-06/" target="_blank" rel="noopener noreferrer">
@@ -192,36 +195,45 @@
             </div>
         </section>
 
-        <!-- Contact section -->
+        <!-- Contact section: форма слева, робот справа — один контейнер -->
         <section id="contact" class="contact-section">
-            <h2>Let's Work Together</h2>
-            <form action="https://formspree.io/f/xnnzneyv" method="POST" class="contact-form" autocomplete="off">
-                <input 
-                    type="text" 
-                    name="name" 
-                    class="contact-input" 
-                    placeholder="Your Name" 
-                    required 
-                    minlength="2"
-                >
-                <input 
-                    type="email" 
-                    name="email" 
-                    class="contact-input" 
-                    placeholder="Your Email" 
-                    required
-                >
-                <textarea 
-                    name="message" 
-                    class="contact-input" 
-                    placeholder="Your Message" 
-                    required 
-                    minlength="10"
-                ></textarea>
-                <button type="submit" class="submit-button">
-                    Send <i class="fas fa-paper-plane"></i>
-                </button>
-            </form>
+            <div class="contact-wrapper">
+                <div class="contact-content">
+                    <h2>Let's Work Together</h2>
+                    <p class="contact-tagline">Drop a line — I'll get back to you.</p>
+                    <form action="https://formspree.io/f/xnnzneyv" method="POST" class="contact-form" autocomplete="off">
+                        <input 
+                            type="text" 
+                            name="name" 
+                            class="contact-input" 
+                            placeholder="Your Name" 
+                            required 
+                            minlength="2"
+                        >
+                        <input 
+                            type="email" 
+                            name="email" 
+                            class="contact-input" 
+                            placeholder="Your Email" 
+                            required
+                        >
+                        <textarea 
+                            name="message" 
+                            class="contact-input" 
+                            placeholder="Your Message" 
+                            required 
+                            minlength="10"
+                        ></textarea>
+                        <button type="submit" class="submit-button">
+                            Send <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="contact-spline" aria-hidden="true">
+                    <canvas id="canvas3d"></canvas>
+                    <div class="contact-spline-glow"></div>
+                </div>
+            </div>
         </section>
 
         <!-- Footer -->
@@ -251,6 +263,9 @@
         </footer>
     </div>
 
+    <a href="#top" class="back-to-top" aria-label="Наверх" title="Наверх"></a>
+
+    <script type="module" src="js/spline-bg.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

@@ -6,6 +6,29 @@ document.addEventListener('DOMContentLoaded', () => {
         form.reset();
     }
 
+    // Убираем класс появления после анимации
+    requestAnimationFrame(() => {
+        document.body.classList.remove('page-load');
+    });
+
+    // Кнопка «Наверх»: показывать после прокрутки, плавный скролл по клику
+    const backToTop = document.querySelector('.back-to-top');
+    if (backToTop) {
+        const toggleBackToTop = () => {
+            if (window.scrollY > 400) {
+                backToTop.classList.add('is-visible');
+            } else {
+                backToTop.classList.remove('is-visible');
+            }
+        };
+        window.addEventListener('scroll', toggleBackToTop, { passive: true });
+        toggleBackToTop();
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
     // form.addEventListener('submit', async (e) => {
     //     e.preventDefault();
         

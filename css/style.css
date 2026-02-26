@@ -11,6 +11,8 @@
     --spacing-sm: 10px;
     --spacing-md: 20px;
     --spacing-lg: 50px;
+    --section-padding-y: 60px;
+    --section-padding-x: 20px;
     --z-index-base: 1;
     --z-index-overlay: 10;
     --z-index-modal: 100;
@@ -24,18 +26,56 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* Main styles */
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background: #000000;
     color: #ffffff;
     line-height: 1.6;
     overflow-x: hidden;
 }
 
+/* Появление при загрузке */
+body.page-load .main-container {
+    animation: pageEnter 0.6s ease-out forwards;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Фокус для клавиатуры — единый стиль */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #000, 0 0 0 4px rgba(76, 175, 80, 0.6);
+}
+
+.contact-input:focus-visible {
+    box-shadow: 0 0 0 2px #000, 0 0 0 4px rgba(76, 175, 80, 0.6), 0 0 0 3px rgba(76, 175, 80, 0.12);
+}
+
+
 /* Containers */
+.main-container {
+    position: relative;
+    z-index: 1;
+}
 .main-container,
 .header-section {
     max-width: var(--max-width);
@@ -63,7 +103,8 @@ h3 { font-size: 1.5rem; }
 /* Sections */
 .header-section {
     text-align: center;
-    padding: 70px 20px;
+    padding: var(--section-padding-y) var(--section-padding-x);
+    padding-top: 72px;
     background: black;
     color: white;
     position: relative;
@@ -91,9 +132,81 @@ h3 { font-size: 1.5rem; }
     min-width: 200px;
 }
 
-/* Technologies */
+/* Technologies — секция Tech Stack */
 .tech-stack {
-    padding: var(--spacing-lg) 0;
+    padding: var(--section-padding-y) var(--section-padding-x);
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    margin: 0 auto var(--section-padding-y);
+    max-width: 1200px;
+    border: 1px solid rgba(76, 175, 80, 0.15);
+}
+
+.tech-stack h2 {
+    margin-bottom: 8px;
+}
+
+.tech-stack-intro {
+    color: rgba(76, 175, 80, 0.85);
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+}
+
+.tech-stack .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 0;
+    justify-content: center;
+}
+
+.tech-stack .skill-item {
+    flex: 0 0 auto;
+    min-width: 140px;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.tech-stack .skill-item:hover {
+    transform: translateY(-4px);
+    border-color: rgba(76, 175, 80, 0.5);
+    box-shadow: 0 8px 24px rgba(76, 175, 80, 0.15);
+}
+
+.tech-stack .skill-item a {
+    color: rgba(255, 255, 255, 0.95);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    transition: color 0.25s ease;
+    cursor: pointer;
+}
+
+.tech-stack .skill-item a::after {
+    content: '→';
+    margin-left: auto;
+    font-size: 0.9rem;
+    opacity: 0.5;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.tech-stack .skill-item:hover a::after {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+.tech-stack .skill-item a:hover {
+    color: #4CAF50;
+}
+
+.tech-stack .skill-item a:focus-visible {
+    color: #4CAF50;
+}
+
+.tech-stack .skill-item span {
+    color: inherit;
 }
 
 .tech-grid {
@@ -173,7 +286,7 @@ h3 { font-size: 1.5rem; }
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 50px 20px;
+    padding: var(--section-padding-y) var(--section-padding-x);
     background: var(--primary-dark);
 }
 
@@ -242,6 +355,8 @@ h3 { font-size: 1.5rem; }
 }
 
 .main-container {
+    position: relative;
+    z-index: 1;
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
@@ -249,7 +364,8 @@ h3 { font-size: 1.5rem; }
 }
 .header-section {
     text-align: center;
-    padding: 70px 20px;
+    padding: var(--section-padding-y) var(--section-padding-x);
+    padding-top: 72px;
     background: black;
     color: white;
     position: relative;
@@ -279,7 +395,7 @@ p {
     font-size: 1.2rem;
 }
 .projects-section {
-    padding: 50px 0;
+    padding: var(--section-padding-y) var(--section-padding-x);
     text-align: center;
     background: #0a0a1a;
     color: white;
@@ -326,17 +442,15 @@ p {
     background: #2563eb;
 }
 .footer-section {
-    background: linear-gradient(180deg, 
-        rgba(10, 10, 26, 0.95),
-        rgba(20, 20, 40, 0.98)
-    );
-    padding: 50px 20px;
+    background: #000;
+    padding: var(--section-padding-y) var(--section-padding-x);
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(76, 175, 80, 0.2);
+    box-shadow: 0 -4px 40px rgba(76, 175, 80, 0.04);
 }
 
-/* Glowing grid effect in the background */
+/* Лёгкая сетка в стиле остальных секций */
 .footer-section::before {
     content: '';
     position: absolute;
@@ -345,11 +459,12 @@ p {
     right: 0;
     bottom: 0;
     background: 
-        linear-gradient(90deg, transparent 0%, rgba(76, 175, 80, 0.05) 50%, transparent 100%),
-        linear-gradient(0deg, transparent 0%, rgba(76, 175, 80, 0.05) 50%, transparent 100%);
-    background-size: 30px 30px;
-    animation: gridMove 20s linear infinite;
-    opacity: 0.5;
+        linear-gradient(90deg, transparent 0%, rgba(76, 175, 80, 0.04) 50%, transparent 100%),
+        linear-gradient(0deg, transparent 0%, rgba(76, 175, 80, 0.04) 50%, transparent 100%);
+    background-size: 40px 40px;
+    animation: gridMove 25s linear infinite;
+    opacity: 0.6;
+    pointer-events: none;
 }
 
 /* Social icons container */
@@ -693,28 +808,50 @@ p:hover {
 
 .contact-input {
     width: 100%;
-    padding: 15px;
-    border: 2px solid rgba(76, 175, 80, 0.3);
-    border-radius: 8px;
-    background: rgba(20, 20, 40, 0.7);
-    color: #ffffff;
+    padding: 14px 18px;
+    border: 1px solid rgba(76, 175, 80, 0.25);
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.35);
+    color: #fff;
+    font-size: 1rem;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.contact-input:hover {
+    border-color: rgba(76, 175, 80, 0.4);
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.contact-input:focus {
+    outline: none;
+    border-color: rgba(76, 175, 80, 0.6);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.12);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .submit-button {
     width: 200px;
-    padding: 12px 24px;
+    padding: 14px 28px;
     border: none;
-    border-radius: 30px;
-    background: linear-gradient(45deg, #4CAF50, #45a049);
+    border-radius: 12px;
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
     color: white;
+    font-size: 1rem;
     cursor: pointer;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 20px rgba(76, 175, 80, 0.25);
+}
+
+.submit-button:hover {
+    box-shadow: 0 6px 28px rgba(76, 175, 80, 0.4);
+    transform: translateY(-1px);
 }
 
 .about-section {
-    padding: 60px 20px;
-    background: rgba(20, 20, 40, 0.95);
+    padding: var(--section-padding-y) var(--section-padding-x);
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(76, 175, 80, 0.12);
+    background: rgba(20, 20, 40, 0.95);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     position: relative;
@@ -728,6 +865,7 @@ p:hover {
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 1;
     background: 
         linear-gradient(45deg, 
             rgba(76, 175, 80, 0.05) 25%, 
@@ -736,7 +874,8 @@ p:hover {
             rgba(76, 175, 80, 0.05) 75%);
     background-size: 60px 60px;
     animation: gridMove 20s linear infinite;
-    opacity: 0.3;
+    opacity: 0.35;
+    pointer-events: none;
 }
 
 .about-section h2 {
@@ -868,6 +1007,7 @@ p:hover {
     transform: translateY(20px);
     animation: fadeInUp 0.6s ease forwards;
 }
+
 
 .about-section > *:nth-child(2) { animation-delay: 0.2s; }
 .about-section > *:nth-child(3) { animation-delay: 0.4s; }
@@ -1069,12 +1209,12 @@ p:hover {
     }
 }
 
-.contact-input:invalid {
-    border-color: #ff4444;
+.contact-input:invalid:not(:placeholder-shown) {
+    border-color: rgba(76, 175, 80, 0.4);
 }
 
-.contact-input:valid {
-    border-color: #4CAF50;
+.contact-input:valid:not(:placeholder-shown) {
+    border-color: rgba(76, 175, 80, 0.5);
 }
 
 .submit-button:disabled {
@@ -1095,26 +1235,206 @@ p:hover {
     }
 }
 
-/* Add smooth appearance for placeholder */
+/* Плейсхолдеры в тон секции */
 .contact-input::placeholder {
+    color: rgba(76, 175, 80, 0.45);
     transition: opacity 0.3s ease;
 }
 
 .contact-input:focus::placeholder {
-    opacity: 0;
+    opacity: 0.6;
 }
 
-/* Form styles */
+/* Form styles — форма и робот в одном фоне (как у робота) */
 .contact-section {
-    padding: 50px 0;
-    text-align: center;
+    padding: var(--section-padding-y) var(--section-padding-x);
+    padding-bottom: 64px;
+}
+
+.contact-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 44px 44px 44px 52px;
+    background: #000;
+    border-radius: 24px;
+    box-shadow:
+        0 0 0 1px rgba(76, 175, 80, 0.22),
+        0 0 80px rgba(76, 175, 80, 0.06),
+        0 20px 50px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Общий «свет» от формы к роботу — связка блока */
+.contact-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background: linear-gradient(
+        105deg,
+        rgba(76, 175, 80, 0.06) 0%,
+        rgba(76, 175, 80, 0.03) 40%,
+        rgba(76, 175, 80, 0.05) 70%,
+        rgba(76, 175, 80, 0.08) 100%
+    );
+}
+
+/* Тонкая линия между формой и роботом — визуальный мост */
+.contact-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -24px;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(76, 175, 80, 0.15) 20%,
+        rgba(76, 175, 80, 0.25) 50%,
+        rgba(76, 175, 80, 0.15) 80%,
+        transparent 100%
+    );
+}
+
+.contact-content {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-content h2 {
+    margin-bottom: 8px;
+}
+
+.contact-content .contact-form {
+    margin-top: 20px;
 }
 
 .contact-form {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    max-width: 460px;
+}
+
+/* Подзаголовок — связывает текст с идеей «написать» */
+.contact-content .contact-tagline {
+    font-size: 0.95rem;
+    color: rgba(76, 175, 80, 0.7);
+    margin: 0;
+    margin-bottom: 4px;
+}
+
+/* 3D робот — ближе к форме, в одном потоке */
+.contact-spline {
+    flex: 0 0 auto;
+    width: 38%;
+    max-width: 360px;
+    height: 300px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: transparent;
+    position: relative;
+    z-index: 1;
+    align-self: center;
+}
+
+.contact-spline #canvas3d {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.contact-spline-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+        ellipse 75% 80% at 50% 50%,
+        rgba(76, 175, 80, 0.14) 0%,
+        rgba(76, 175, 80, 0.04) 50%,
+        transparent 75%
+    );
+}
+
+@media (max-width: 900px) {
+    .contact-wrapper {
+        flex-direction: column;
+        gap: 32px;
+        padding: 32px 24px;
+    }
+    .contact-content::after {
+        display: none;
+    }
+    .contact-content {
+        text-align: center;
+    }
+    .contact-content .contact-tagline {
+        text-align: center;
+    }
+    .contact-form {
+        align-items: center;
+        max-width: 100%;
+    }
+    .contact-spline {
+        width: 100%;
+        max-width: 320px;
+        height: 260px;
+    }
+}
+
+/* Кнопка «Наверх» */
+.back-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    color: #fff;
+    display: flex;
     align-items: center;
-    gap: 20px;
-    max-width: 600px;
-    margin: 0 auto;
+    justify-content: center;
+    text-decoration: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: var(--z-index-overlay);
+    box-shadow: 0 4px 20px rgba(76, 175, 80, 0.3);
+}
+
+.back-to-top::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 10px solid currentColor;
+}
+
+.back-to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    box-shadow: 0 6px 28px rgba(76, 175, 80, 0.45);
+    transform: translateY(-2px);
+}
+
+.back-to-top:focus-visible {
+    box-shadow: 0 0 0 2px #000, 0 0 0 4px rgba(76, 175, 80, 0.6);
 }
